@@ -1,0 +1,63 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <title>{% block title %}{% endblock %}</title>
+    <style>
+        tr:nth-child(even) {background-color: #f2f2f2;}
+    </style>
+</head>
+<body>
+<div class="container mt-5 text-center">
+
+<h4 class="alert alert-info">COMPANY INFORMATION</h4>
+    </div>
+<div class="container mt-5">
+    <a href="{% url 'webapp:Home' %}" class="btn btn-primary">Home</a>
+        <a href="{% url 'webapp:Cform' %}" class="btn btn-success">Dashboard</a>
+    <a href="{% url 'webapp:Cform' %}" ><button class="btn btn-warning">Add Company</button></a>
+    <br></div>
+    <div class="container mt-5">
+    {% if stud %}
+        <h3 class="alert alert-info text-center">Dashboard</h3>
+            <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Company</th>
+      <th scope="col">Division</th>
+      <th scope="col">Sector</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Website</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for i in stud %}
+    <tr>
+      <th scope="row">{{ i.Company }}</th>
+      <td>{{ i.Division }}</td>
+      <td>{{ i.Sector }}</td>
+      <td>{{ i.Phone }}</td>
+        <td><a href="{{i.Website}}" target="_blank">{{i.Website}}</a></td>
+    </tr>
+  </tbody>
+{% endfor %}
+</table>
+    {% else %}
+        <h3 style="color: Red;" class="text-center"> </h3><br><hr>
+    {% endif %}
+<br><hr class="alert alert-info">
+    {% block content %}{% endblock content%}
+<script src="{%static 'js/script1.js' %}"></script>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+</body>
+
+
+</html>

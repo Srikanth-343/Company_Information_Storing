@@ -1,0 +1,155 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-sm-4">
+        <h4 class="text-center alert alert-info">Fill to Add Company</h4>
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" class="btn btn-primary">
+        </form>
+    </div>
+<br>
+    <div class="col-sm-8">
+        <h4 class="text-center alert alert-info">List of Company Details</h4>
+        {% if stud %}
+
+            <table class="table table-bordered">
+  <thead>
+
+  </thead>
+  <tbody>
+  {% for i in stud %}
+    <tr>
+        <th style="background-color: #4CAF50; color: white;"><h3>{{i.Company}}</h3></th>
+        <th><a href="{% url 'webapp:Edit' i.id %}" class="btn btn-warning">Edit Company</a>
+            <form action="{% url 'webapp:deleteComp' i.id%}" method="POST" class="d-inline">
+                 {% csrf_token %}
+                <input type="submit" class="btn btn-danger" value="Delete">
+            </form>
+        </th>
+
+    </tr> <tr>
+      <th scope="row">Division</th>
+      <td>{{i.Division}}</td>
+    </tr>
+
+   <tr>
+      <th scope="row">Sector</th>
+      <td>{{i.Sector}}</td>
+    </tr>
+   <tr>
+      <th scope="row">Phone</th>
+      <td>{{i.Phone}}</td>
+    </tr>
+   <tr>
+      <th scope="row">Fax</th>
+      <td>{{i.Fax}}</td>
+    </tr>
+   <tr>
+  <th scope="row">Website</th>
+       <td><a href="{{i.Website}}" target="_blank">{{i.Website}}</a></td>
+    </tr>
+   <tr>
+       <tr>
+      <th scope="row">NAICS_codes</th>
+      <td>{{i.NAICS_codes}}</td>
+    </tr>
+   <tr>
+   <tr>
+      <th scope="row">EstimatedPayroll</th>
+      <td>{{i.EstimatedPayroll}}</td>
+    </tr>
+   <tr>
+          <tr>
+      <th scope="row">Number_Of_Employees</th>
+      <td>{{i.Number_of_Employees}}</td>
+    </tr>
+   <tr>
+          <tr>
+      <th scope="row">Industry</th>
+      <td>{{i.Industry}}</td>
+    </tr>
+   <tr>
+          <tr>
+      <th scope="row">Number_of_Internal_Employees</th>
+      <td>{{i.Number_of_Internal_Employees}}</td>
+    </tr>
+   <tr>
+          <tr>
+      <th scope="row">Number_of_consultants_on_OPT</th>
+      <td>{{i.Number_of_consultants_on_OPT}}</td>
+    </tr>
+   <tr>
+          <tr>
+      <th scope="row">Number_of_consultants_on_CTP</th>
+      <td>{{i.Number_of_consultants_on_CPT}}</td>
+    </tr>
+   <tr>
+          <tr>
+      <th scope="row">Number_of_consultants_on_H1B</th>
+      <td>{{i.Number_of_consultants_on_H1B}}</td>
+    </tr>
+   <tr>
+          <tr>
+      <th scope="row">Number_of_card_consultants</th>
+      <td>{{i.Number_of_card_consultants}}</td>
+    </tr>
+   <tr>
+          <tr>
+      <th scope="row">Number_of_US_Citizens</th>
+      <td>{{i.Number_of_US_Citizens}}</td>
+    </tr>
+   <tr>
+          <tr>
+      <th scope="row">Number_of_consultants_on_other_visa</th>
+      <td>{{i.Number_of_consultants_on_other_visa}}</td>
+    </tr>
+   <tr>
+      <th scope="row">AddressLine1</th>
+      <td>{{i.AddressLine1}}</td>
+    </tr>
+   <tr>
+      <th scope="row">AddressLine2</th>
+      <td>{{i.AddressLine2}}</td>
+    </tr>
+<tr>
+      <th scope="row">City</th>
+      <td>{{i.City}}</td>
+    </tr>
+  <tr>
+      <th scope="row">Zipcode</th>
+      <td>{{i.Zipcode}}</td>
+    </tr>
+  <tr>
+      <th scope="row">State</th>
+      <td>{{i.State}}</td>
+    </tr>
+  <tr>
+      <th scope="row">FederalID_EIN</th>
+      <td>{{i.FederalID_EIN}}</td>
+    </tr>
+  <tr>
+      <th scope="row">GST_Number</th>
+      <td>{{i.GST_Number}}</td>
+    </tr>
+  <tr>
+      <th scope="row">AddadditionalInformation</th>
+      <td>{{i.AddadditionalInformation}}</td>
+    </tr>
+  </tbody>
+                {% endfor %}
+</table>
+
+        {% else %}
+        <h3 style="color: Red;" class="text-center"> No records</h3>
+        {% endif %}
+    </div>
+
+</div>
+
+{% endblock content%}
+
+
+
